@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+    <!-- http://getbootstrap.com/docs/4.1/content/typography/ -->
+    <div class="jumbotron">
+      <h1 class="display-4">Today's Plan!</h1>
+      <p class="lead">Here is your suggested meal plan at {{hall}}. Pick up the following foods in the following amunts. Your daily calorie and macronutrient information breakdown is available at the bottom</p>
+      <hr class="my-4">
+      <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <p class="lead">
+        Breakfast:
+        <ul class="list-group">
+            {% for a in textb %}
+      <li class="list-group-item">{{a[0]}} ({{a[1]}} from {{a[2]}})</li>
+             {% endfor %}
+        </ul>
+      </p>
+            </div>
+            <div class="col-sm">
+              <p class="lead">
+        Lunch:
+        <ul class="list-group">
+            {% for a in textl %}
+      <li class="list-group-item">{{a[0]}} ({{a[1]}} from {{a[2]}})</li>
+             {% endfor %}
+        </ul>
+      </p>
+            </div>
+            <div class="col-sm">
+              <p class="lead">
+        Dinner:
+        <ul class="list-group">
+            {% for a in textd %}
+      <li class="list-group-item">{{a[0]}} ({{a[1]}} from {{a[2]}})</li>
+             {% endfor %}
+        </ul>
+      </p>
+            </div>
+          </div>
+        </div>
+
+      <hr class="my-4">
+      <p class="lead">
+        In summary, your meals contain {{calorie}} calories, with a macronutrient breakup of: {{protein}}g of protein, {{carb}}g of carbs, and {{fat}}g of fat. This leaves you {{snack}} calories worth of snacks to enjoy in between!
+        <br>
+        {{proteinyes}}. {{carbyes}}. {{fatyes}}.
+      </p>
+    </div>
+{% endblock %}

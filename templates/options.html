@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Preferences
+{% endblock %}
+
+{% block main %}
+<div class="jumbotron">
+  <h1 class="display-4">Update Information</h1>
+  <hr class="my-4">
+  <p class="lead">
+      <p class="lead">Current Information</p>
+      <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Weight</th>
+      <th scope="col">Height</th>
+      <th scope="col">Sex</th>
+      <th scope="col">Dietary Restriction</th>
+      <th scope="col">Diet</th>
+      <th scope="col">Activity</th>
+      <th scope="col">Dining Hall</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>{{weight}}</td>
+        <td>{{height}}</td>
+        <td>{{sex}}</td>
+        <td>{{dietary}}</td>
+        <td>{{plan}}</td>
+        <td>{{activity}}</td>
+        <td>{{hall}}</td>
+        </tr>
+    </tbody>
+    </table>
+  </p>
+  <hr class="my-4">
+  <p class="lead">
+      <p class="lead">Update new information here</p>
+        <form action="/options" method="post" name = "update">
+    <div class="form-group">
+            <input class="form-control" name="weight" placeholder="Weight(lb)" type="number">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="height" placeholder="Height(cm)" type="number">
+        </div>
+        <div class="form-group">
+        <label for="exampleSelect1">Sex</label>
+        <select class="form-control" name="sex">
+              <option>Male</option>
+              <option>Female</option>
+        </select>
+        </div>
+        <div class="form-group">
+        <label for="exampleSelect1">Dietary Restriction</label>
+        <select class="form-control" name="dietary">
+              <option>Vegetarian</option>
+              <option>None</option>
+        </select>
+        </div>
+        <div class="form-group">
+        <label for="exampleSelect1">Plan</label>
+        <select class="form-control" name="plan">
+              <option>Diet (Lose Weight)</option>
+              <option>Muscle (Gain Weight)</option>
+        </select>
+        </div>
+        <div class="form-group">
+        <label for="exampleSelect1">Activity</label>
+        <select class="form-control" name="activity">
+              <option>Sedentary</option>
+              <option>Lightly active (light exercise/sports 1-3 days/week)</option>
+              <option>Moderately active (moderate exercise/sports 3-5 days/week)</option>
+              <option>Very active (hard exercise/sports 6-7 days a week)</option>
+        </select>
+        </div>
+        <div class="form-group">
+        <label for="exampleSelect1">Dining Hall</label>
+        <select class="form-control" name="hall">
+              <option>Annenberg Hall</option>
+              <option>Adams House</option>
+              <option>Cabot/Pforzheimer House</option>
+              <option>Currier House</option>
+              <option>Dunster/Mather House</option>
+              <option>Eliot/Kirkland House</option>
+              <option>Leverett House</option>
+              <option>Lowell/Winthrop House</option>
+              <option>Quincy House</option>
+        </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+  </p>
+</div>
+
+<script>
+        document.querySelector('form').onsubmit = function()
+        {
+          var fields = ["weight", "height", "sex", "dietary", "plan", "activity", "hall"]
+          var i, l = fields.length;
+          var fieldname;
+          for (i = 0; i < l; i++) {
+            fieldname = fields[i];
+            if (document.forms["update"][fieldname].value === "") {
+              alert(fieldname + " can not be empty");
+              return false;
+            }
+          }
+          return true;
+        }
+</script>
+
+
+{% endblock %}

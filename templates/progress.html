@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Current Information
+{% endblock %}
+
+{% block main %}
+    <div class="jumbotron">
+  <h1 class="display-4">Current Plan</h1>
+  <p class="lead">Your daily meal plan is constructed from your health information and your chosen plan. <br>The <a href="http://www.healthfitonline.com/resources/harris_benedict.php">Harris-Benedict Formula</a> is used to calculate your daily calories: {{bmr}}</p>
+  <hr class="my-4">
+  <p class="lead">
+      <p class="lead">Current Information</p>
+    <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Age</th>
+      <th scope="col">Weight</th>
+      <th scope="col">Height</th>
+      <th scope="col">Sex</th>
+      <th scope="col">Dietary Restriction</th>
+      <th scope="col">Plan</th>
+      <th scope="col">Level of Activity</th>
+      <th scope="col">Dining Hall</th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+        <td>{{age}}</td>
+        <td>{{weight}}</td>
+        <td>{{height}}</td>
+        <td>{{sex}}</td>
+        <td>{{dietary}}</td>
+        <td>{{plan}}</td>
+        <td>{{activity}}</td>
+        <td>{{hall}}</td>
+        </tr>
+    </tbody>
+    </table>
+  </p>
+</div>
+
+
+{% endblock %}
